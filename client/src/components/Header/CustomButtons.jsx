@@ -11,7 +11,7 @@ const Wrapper = styled(Box)`
 	display: flex;
 	margin 0 3% 0 auto;
 	&>*{
-		margin-right: 40px;
+		margin-right: 2.5rem;
 		font-size: 16px;
 		align-items: center;
 	}

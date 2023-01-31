@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Banner from './Banner'
 import NavBar from './NavBar'
 
 const Home = () => {
-  return (
-	<NavBar/>
-  )
+	return (
+		<>
+			<NavBar />
+			<Banner />
+		</>
+	)
 }
 
 export default Home
