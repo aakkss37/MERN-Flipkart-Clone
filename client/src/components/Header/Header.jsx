@@ -14,7 +14,7 @@ const StyledHeader = styled(AppBar)`
     height: 55px;
 `;
 const Component = styled(Box)`
-    margin-left: 12%;
+    margin-left: 10%;
     line-height: 0;
     color: #FFFFFF;
     text-decoration: none;
@@ -29,7 +29,9 @@ const PlusImage = styled('img')({
 	marginLeft: 4
 })
 
-
+// const CustomButtonWrapper =(Box)`
+// 	 margin-left: 5%;
+// `
 
 
 const Header = () => {
@@ -51,7 +53,8 @@ const Header = () => {
 				</Component>
 
 				<Search/>
-				<Box>
+
+				<Box style={{margin: '0 5% 0 auto'}}>
 					<CustomButtons/>
 				</Box>
 
