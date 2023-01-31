@@ -22,6 +22,11 @@ const Component = styled(Box)`
 const SubHeading = styled(Typography)`
     font-size: 10px;
     font-style: italic;
+	&:hover{
+		cursor: pointer;
+		text-decoration: underline;
+		text-decoration-color: #FFE500;
+	}
 `
 const PlusImage = styled('img')({
 	width: 10,
@@ -47,7 +52,7 @@ const Header = () => {
 				<Component>
 					<img src={logoURL} alt="logo" style={{ width: 75 }} />
 					<Box style={{display: 'flex'}}>
-						<SubHeading>Explore <Box component="span" style={{color: '#FFE500'}} >Plus</Box></SubHeading>
+						<SubHeading>Explore <Box component="span" style={{color: '#FFE500', fontWeight: 800, fontSize: 11 }} >Plus</Box></SubHeading>
 						<PlusImage src={subURL} alt="plus"/>
 					</Box>
 				</Component>

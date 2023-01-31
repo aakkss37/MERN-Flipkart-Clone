@@ -11,7 +11,6 @@ const Wrapper = styled(Box)`
 	display: flex;
 	margin 0 3% 0 auto;
 	&>*{
-		margin-right: 2.5rem;
 		font-size: 16px;
 		align-items: center;
 	}
@@ -38,12 +37,12 @@ const CustomButtons = () => {
 
 	return (
 		<Wrapper>
-			<LoginStyled variant="contained">Login</LoginStyled>
+			<LoginStyled variant="contained" style={{marginRight: 40}}>Login</LoginStyled>
 
-			<Typography style={{ marginTop: 3, width: 135 }}>Become a Seller</Typography>
-			<Typography style={{ marginTop: 3 }}>More</Typography>
+			<Typography style={{ marginTop: 3, width: 135, marginRight: 40 }}>Become a Seller</Typography>
+			<Typography style={{ marginTop: 3, marginRight: 40 }}>More</Typography>
 
-			<Container>
+			<Container style={{ marginRight: 40 }}>
 				<ShoppingCart />
 				<Typography>&nbsp;Cart</Typography>
 			</Container>

@@ -14,9 +14,8 @@ const Conatiner = styled(Box)`
 	text-align: center;
 `
 const Text = styled(Typography)`
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 600;
-	font-family: inharit;
 `
 
 
