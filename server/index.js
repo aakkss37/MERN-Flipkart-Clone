@@ -2,12 +2,21 @@ import express  from "express";
 import bodyParser from "body-parser";
 import cors from 'cors';
 
+// express iniitialize
+const app = express()
+
+
+
 // APP CONFIGURATION
 app.use(bodyParser.json({limit: '30mb', extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
-const app = express()
+
+// DATABASE CONNECTION
+import mongoseConnection from "./database/db.js";
+mongoseConnection();
+
 
 const PORT = 8000;
 app.listen(PORT, ()=>{
