@@ -39,7 +39,7 @@ const Header = () => {
 
 	return (
 		<StyledHeader>
-			<Toolbar>
+			<Toolbar style={{minHeight: 55}}>
 
 				<Component>
 					<img src={logoURL} alt="logo" style={{ width: 75 }} />
@@ -51,7 +51,7 @@ const Header = () => {
 
 				<Search/>
 
-				
+
 
 			</Toolbar>
 		</StyledHeader>
