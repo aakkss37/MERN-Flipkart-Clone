@@ -28,6 +28,10 @@ const LoginStyled = styled(Button)`
 	margin-right: 20px;
 	font-weight: 600;
 	height: 32px;
+	&:hover{
+		color: #2874f0;
+		background: #FFFFFF;
+	}
 `
 
 
@@ -37,7 +41,7 @@ const CustomButtons = () => {
 
 	return (
 		<Wrapper>
-			<LoginStyled variant="contained" style={{marginRight: 40}}>Login</LoginStyled>
+			<LoginStyled variant="contained" style={{ marginRight: 40 }}>Login</LoginStyled>
 
 			<Typography style={{ marginTop: 3, width: 135, marginRight: 40 }}>Become a Seller</Typography>
 			<Typography style={{ marginTop: 3, marginRight: 40 }}>More</Typography>
