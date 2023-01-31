@@ -9,6 +9,8 @@ const SearchContainer = styled(Box)`
   width: 38%;
   background-color: #fff;
   display: flex;
+  align-items: center;
+  padding-top: 2px;
 `;
 const InputSearchBase = styled(InputBase)`
   font-size: unset;
@@ -33,5 +35,6 @@ const Search = () => {
 	  </SearchContainer>
   )
 }
+
 
 export default Search
