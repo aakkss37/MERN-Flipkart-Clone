@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { styled, Box, Button, Dialog, TextField, Typography } from '@mui/material';
 import { API } from '../../service/api';
+import { DataContext } from '../../contextAPI/Dataprovider'
 
 
 
@@ -81,6 +82,8 @@ const HaveAccount = styled(Typography)`
     font-size: 14px;
     cursor: pointer
 `
+
+
 const initialAccountDetail = {
 	name: '',
 	email: '',
@@ -88,34 +91,46 @@ const initialAccountDetail = {
 	phone: '',
 }
 
-const LoginDialog = (props) => {
-	const [haveAccount, setHaveAccount] = useState(true)
-	const [accountDetail, setAccountDetail] = useState(initialAccountDetail)
 
+const LoginDialog = (props) => {
+	const [haveAccount, setHaveAccount] = useState(true);
+	const [accountDetail, setAccountDetail] = useState(initialAccountDetail);
+	const { setLoggedinUser } = useContext(DataContext)
+
+	// CLOSE DIALOG BOX
 	const closeDialogBoxHandler = () => {
 		props.setOpenDialog(false);
 		setHaveAccount(true);
 	}
-	const signUpSubmitHandler = async()=>{
+
+
+	// SIGNUP HANDLER
+	const signUpSubmitHandler = async () => {
 		try {
 			const responce = await API.userSignup(accountDetail);
-			console.log("account created sucessfully ===>  ",responce);
-			// setAccountDetail(initialAccountDetail);
-			// setHaveAccount(true);
+			// console.log("account created sucessfully ===>  ", responce);
+			if (!responce) return;
+			setAccountDetail(initialAccountDetail);
+			setHaveAccount(true);
+			closeDialogBoxHandler();
+			setLoggedinUser(responce.data)
 		} catch (error) {
 			console.log("Error while calling Signup API ===> ", error);
 		}
 	}
 
+
+	// IMPUT CHANGE HANDLER
 	const inputChangeHandler = (e) => {
 		setAccountDetail({ ...accountDetail, [e.target.name]: e.target.value })
 	}
+
 
 	return (
 		<Dialog open={props.openDialog} onClose={closeDialogBoxHandler} PaperProps={{ sx: { maxWidth: 'unset' } }}>
 			{ /* PaperProps={{sx: {maxWidth: 'unset'}}}---> mui dialog box have a default max width... 
 			if your element takes occupied width more then that.. then a scrole bar will appear.. 
-			to prevent thant and remove the default max-width we need to set this property*/}
+			to prevent thant and remove the default max-width we need to set this property */}
 			<Component>
 				{
 					haveAccount
