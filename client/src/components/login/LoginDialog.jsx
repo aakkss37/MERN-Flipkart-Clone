@@ -112,6 +112,7 @@ const LoginDialog = (props) => {
 	const closeDialogBoxHandler = () => {
 		props.setOpenDialog(false);
 		setHaveAccount(true);
+		setIsError(false)
 	}
 
 
