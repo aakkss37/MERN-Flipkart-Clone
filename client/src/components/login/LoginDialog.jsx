@@ -98,10 +98,10 @@ const LoginDialog = (props) => {
 	}
 	const signUpSubmitHandler = async()=>{
 		try {
-			const responce = API.userSignup(accountDetail);
-			console.log("account created sucessfully ===>  ",responce.data);
-			setAccountDetail(initialAccountDetail);
-			setHaveAccount(true);
+			const responce = await API.userSignup(accountDetail);
+			console.log("account created sucessfully ===>  ",responce);
+			// setAccountDetail(initialAccountDetail);
+			// setHaveAccount(true);
 		} catch (error) {
 			console.log("Error while calling Signup API ===> ", error);
 		}

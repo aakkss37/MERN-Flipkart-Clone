@@ -38,7 +38,7 @@ axiosInstance.interceptors.response.use(
 
 const processResponse = (response) => {
 	// rasponce sucessful
-	if (response?.status === 200) {
+	if (response?.status >= 200 && response?.status < 300) {
 		return {
 			isSuccess: true,
 			data: response.data
