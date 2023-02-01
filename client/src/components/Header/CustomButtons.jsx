@@ -1,9 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { Box, Typography, Button, styled } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
 import LoginDialog from '../login/LoginDialog';
+
+import { DataContext } from '../../contextAPI/Dataprovider';
+import { capitalizeFirstLetter } from '../../constant/modify';
 
 
 
@@ -38,12 +41,20 @@ const LoginStyled = styled(Button)`
 
 
 const CustomButtons = () => {
-	const [openDialog, setOpenDialog] = useState(false)
+	const [openDialog, setOpenDialog] = useState(false);
+	const { loggedinUser } = useContext(DataContext)
 
 
 	return (
 		<Wrapper>
-			<LoginStyled variant="contained" style={{ marginRight: 40 }} onClick={() => setOpenDialog(true)}>Login</LoginStyled>
+			
+			{
+				loggedinUser.name.length > 0
+				?
+					<Typography style={{ marginTop: 3, marginRight: 40, fontWeight: 600 }}>{capitalizeFirstLetter(loggedinUser.name)}</Typography>
+				:
+				<LoginStyled variant="contained" style={{ marginRight: 40 }} onClick={() => setOpenDialog(true)}>Login</LoginStyled>
+			}
 
 			<Typography style={{ marginTop: 3, width: 135, marginRight: 40 }}>Become a Seller</Typography>
 			<Typography style={{ marginTop: 3, marginRight: 40 }}>More</Typography>
@@ -52,7 +63,7 @@ const CustomButtons = () => {
 				<ShoppingCart />
 				<Typography>&nbsp;Cart</Typography>
 			</Container>
-			<LoginDialog openDialog={openDialog} setOpenDialog={setOpenDialog}/>
+			<LoginDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
 		</Wrapper>
 	)
 }
