@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { styled, Box, Button, Dialog, TextField, Typography } from '@mui/material';
+import { API } from '../../service/api';
 
 
 
@@ -72,6 +73,14 @@ const CreateAccount = styled(Typography)`
     font-size: 14px;
     cursor: pointer
 `
+const HaveAccount = styled(Typography)`
+    margin: auto 0 5px 0;
+    text-align: center;
+    color: #2874f0;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer
+`
 const initialAccountDetail = {
 	name: '',
 	email: '',
@@ -83,22 +92,27 @@ const LoginDialog = (props) => {
 	const [haveAccount, setHaveAccount] = useState(true)
 	const [accountDetail, setAccountDetail] = useState(initialAccountDetail)
 
-	const handleCloseDialogBox = () => {
+	const closeDialogBoxHandler = () => {
 		props.setOpenDialog(false);
 		setHaveAccount(true);
 	}
-	const handleSignupUser = ()=>{
-		console.log(accountDetail);
-		setAccountDetail(initialAccountDetail);
-		setHaveAccount(true);
+	const signUpSubmitHandler = async()=>{
+		try {
+			const responce = API.userSignup(accountDetail);
+			console.log("account created sucessfully ===>  ",responce.data);
+			setAccountDetail(initialAccountDetail);
+			setHaveAccount(true);
+		} catch (error) {
+			console.log("Error while calling Signup API ===> ", error);
+		}
 	}
 
-	const inputChangeHandle = (e) => {
+	const inputChangeHandler = (e) => {
 		setAccountDetail({ ...accountDetail, [e.target.name]: e.target.value })
 	}
 
 	return (
-		<Dialog open={props.openDialog} onClose={handleCloseDialogBox} PaperProps={{ sx: { maxWidth: 'unset' } }}>
+		<Dialog open={props.openDialog} onClose={closeDialogBoxHandler} PaperProps={{ sx: { maxWidth: 'unset' } }}>
 			{ /* PaperProps={{sx: {maxWidth: 'unset'}}}---> mui dialog box have a default max width... 
 			if your element takes occupied width more then that.. then a scrole bar will appear.. 
 			to prevent thant and remove the default max-width we need to set this property*/}
@@ -120,8 +134,8 @@ const LoginDialog = (props) => {
 					haveAccount
 						?
 						<Wrapper>
-							<TextField id="standard-basic" label="Enter Email/mobile no." variant="standard" />
-							<TextField id="standard-basic" label="Enter Password" type='password' variant="standard" />
+							<TextField label="Enter Email/mobile no." variant="standard" />
+							<TextField label="Enter Password" type='password' variant="standard" />
 							<Text >By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
 							<LoginButton>Login</LoginButton>
 							<Typography style={{ textAlign: "center" }}>OR</Typography>
@@ -130,14 +144,14 @@ const LoginDialog = (props) => {
 						</Wrapper>
 						:
 						<Wrapper>
-							<TextField id="standard-basic" onChange={inputChangeHandle} name='name' value={accountDetail.name} label="Enter Name" variant="standard" />
-							<TextField id="standard-basic" onChange={inputChangeHandle} name='phone' value={accountDetail.phone} label="Enter Mobile no." variant="standard" />
-							<TextField id="standard-basic" onChange={inputChangeHandle} name='email' value={accountDetail.email} label="Enter Email" type='email' variant="standard" />
-							<TextField id="standard-basic" onChange={inputChangeHandle} name='password' value={accountDetail.password} label="Enter Password" type='password' variant="standard" />
+							<TextField onChange={inputChangeHandler} name='name' value={accountDetail.name} label="Enter Name" variant="standard" />
+							<TextField onChange={inputChangeHandler} name='phone' value={accountDetail.phone} label="Enter Mobile no." variant="standard" />
+							<TextField onChange={inputChangeHandler} name='email' value={accountDetail.email} label="Enter Email" type='email' variant="standard" />
+							<TextField onChange={inputChangeHandler} name='password' value={accountDetail.password} label="Enter Password" type='password' variant="standard" />
 							<Text >By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
-							<SignupButton onClick={handleSignupUser}>Continue</SignupButton>
+							<SignupButton onClick={signUpSubmitHandler}>Continue</SignupButton>
 							<Typography style={{ textAlign: "center" }}>OR</Typography>
-							<CreateAccount onClick={() => setHaveAccount(true)}>Already have account? Login</CreateAccount>
+							<HaveAccount onClick={() => setHaveAccount(true)}>Already have account? Login</HaveAccount>
 						</Wrapper>
 				}
 
