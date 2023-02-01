@@ -90,11 +90,16 @@ const initialAccountDetail = {
 	password: '',
 	phone: '',
 }
+const initialLoginUserDetail = {
+	email: '',
+	password: '',
+}
 
 
 const LoginDialog = (props) => {
 	const [haveAccount, setHaveAccount] = useState(true);
 	const [accountDetail, setAccountDetail] = useState(initialAccountDetail);
+	const [loginUserDetail, setLoginUserDetail] = useState(initialLoginUserDetail);
 	const { setLoggedinUser } = useContext(DataContext)
 
 	// CLOSE DIALOG BOX
@@ -120,9 +125,27 @@ const LoginDialog = (props) => {
 	}
 
 
-	// IMPUT CHANGE HANDLER
-	const inputChangeHandler = (e) => {
+	// LOGIN HANDLER
+	const loginUpSubmitHandler = async () => {
+		try {
+			const responce = await API.userLogin(loginUserDetail);
+			// console.log("account created sucessfully ===>  ", responce);
+			if (!responce) return;
+			setLoginUserDetail(initialLoginUserDetail);
+			closeDialogBoxHandler();
+			setLoggedinUser(responce.data)
+		} catch (error) {
+			console.log("Error while calling Signup API ===> ", error);
+		}
+	}
+
+
+	// INPUT CHANGE HANDLER
+	const signupInputChangeHandler = (e) => {
 		setAccountDetail({ ...accountDetail, [e.target.name]: e.target.value })
+	}
+	const loginInputChangeHandler = (e) => {
+		setLoginUserDetail({ ...loginUserDetail, [e.target.name]: e.target.value })
 	}
 
 
@@ -149,20 +172,20 @@ const LoginDialog = (props) => {
 					haveAccount
 						?
 						<Wrapper>
-							<TextField label="Enter Email/mobile no." variant="standard" />
-							<TextField label="Enter Password" type='password' variant="standard" />
+							<TextField onChange={loginInputChangeHandler} name='email' value={loginUserDetail.email} label="Enter Email/mobile no." variant="standard" />
+							<TextField onChange={loginInputChangeHandler} name='password' value={loginUserDetail.password} type='password' label="Enter Password" variant="standard" />
 							<Text >By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
-							<LoginButton>Login</LoginButton>
+							<LoginButton onClick={loginUpSubmitHandler}>Login</LoginButton>
 							<Typography style={{ textAlign: "center" }}>OR</Typography>
 							<RequestOTP>Request OTP</RequestOTP>
 							<CreateAccount onClick={() => setHaveAccount(false)} >New to Flipkart? Create an account</CreateAccount>
 						</Wrapper>
 						:
 						<Wrapper>
-							<TextField onChange={inputChangeHandler} name='name' value={accountDetail.name} label="Enter Name" variant="standard" />
-							<TextField onChange={inputChangeHandler} name='phone' value={accountDetail.phone} label="Enter Mobile no." variant="standard" />
-							<TextField onChange={inputChangeHandler} name='email' value={accountDetail.email} label="Enter Email" type='email' variant="standard" />
-							<TextField onChange={inputChangeHandler} name='password' value={accountDetail.password} label="Enter Password" type='password' variant="standard" />
+							<TextField onChange={signupInputChangeHandler} name='name' value={accountDetail.name} label="Enter Name" variant="standard" />
+							<TextField onChange={signupInputChangeHandler} name='phone' value={accountDetail.phone} label="Enter Mobile no." variant="standard" />
+							<TextField onChange={signupInputChangeHandler} name='email' value={accountDetail.email} label="Enter Email" type='email' variant="standard" />
+							<TextField onChange={signupInputChangeHandler} name='password' value={accountDetail.password} label="Enter Password" type='password' variant="standard" />
 							<Text >By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
 							<SignupButton onClick={signUpSubmitHandler}>Continue</SignupButton>
 							<Typography style={{ textAlign: "center" }}>OR</Typography>
