@@ -15,7 +15,9 @@ app.use(cors());
 
 // DATABASE CONNECTION
 import mongoseConnection from "./database/db.js";
+import DefaultData from "./default.js";
 mongoseConnection();
+DefaultData();
 
 
 const PORT = 8000;
