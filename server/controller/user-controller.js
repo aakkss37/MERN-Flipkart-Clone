@@ -16,3 +16,16 @@ export const userSignup = async (request, responce) => {
 		return responce.status(403).json({ msg: error.message });
 	}
 }
+
+export const userLogin = async (request, responce) => {
+	// console.log("request received ===> ",request.body)
+	try {
+		const foundUser = await Users.findOne({ email: request.body.email })
+		if(foundUser && foundUser.password === request.body.password){
+			return responce.status(200).json(foundUser);
+		}
+		return responce.status(401).json({ msg: "wrong cradential" });
+	} catch (error) {
+		return responce.status(401).json({ msg: error.message });
+	}
+}

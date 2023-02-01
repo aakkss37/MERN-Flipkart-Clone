@@ -148,7 +148,7 @@ const LoginDialog = (props) => {
 		setLoginUserDetail({ ...loginUserDetail, [e.target.name]: e.target.value })
 	}
 
-
+	
 	return (
 		<Dialog open={props.openDialog} onClose={closeDialogBoxHandler} PaperProps={{ sx: { maxWidth: 'unset' } }}>
 			{ /* PaperProps={{sx: {maxWidth: 'unset'}}}---> mui dialog box have a default max width... 
