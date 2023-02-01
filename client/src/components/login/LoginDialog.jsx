@@ -30,7 +30,7 @@ const Wrapper = styled(Box)`
 	display: flex;
 	flex-direction: column;
 	align-item: center;
-	& > div, & > button, & > p {
+	& > div, & > button{
         margin-top: 20px;
     }
 `
@@ -82,6 +82,11 @@ const HaveAccount = styled(Typography)`
     font-size: 14px;
     cursor: pointer
 `
+const ErrorText = styled(Typography)`
+	color: red;
+	margin: 5px;
+	font-size: 12px;
+`
 
 
 const initialAccountDetail = {
@@ -101,6 +106,7 @@ const LoginDialog = (props) => {
 	const [accountDetail, setAccountDetail] = useState(initialAccountDetail);
 	const [loginUserDetail, setLoginUserDetail] = useState(initialLoginUserDetail);
 	const { setLoggedinUser } = useContext(DataContext)
+	const [isError, setIsError] = useState(false);
 
 	// CLOSE DIALOG BOX
 	const closeDialogBoxHandler = () => {
@@ -119,7 +125,9 @@ const LoginDialog = (props) => {
 			setHaveAccount(true);
 			closeDialogBoxHandler();
 			setLoggedinUser(responce.data)
+			setIsError(false)
 		} catch (error) {
+			setIsError(true)
 			console.log("Error while calling Signup API ===> ", error);
 		}
 	}
@@ -134,7 +142,9 @@ const LoginDialog = (props) => {
 			setLoginUserDetail(initialLoginUserDetail);
 			closeDialogBoxHandler();
 			setLoggedinUser(responce.data)
+			setIsError(false)
 		} catch (error) {
+			setIsError(true);
 			console.log("Error while calling Signup API ===> ", error);
 		}
 	}
@@ -172,16 +182,18 @@ const LoginDialog = (props) => {
 					haveAccount
 						?
 						<Wrapper>
+							{isError && <ErrorText >Wrong email/password</ErrorText>}
 							<TextField onChange={loginInputChangeHandler} name='email' value={loginUserDetail.email} label="Enter Email/mobile no." variant="standard" />
 							<TextField onChange={loginInputChangeHandler} name='password' value={loginUserDetail.password} type='password' label="Enter Password" variant="standard" />
 							<Text >By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
 							<LoginButton onClick={loginUpSubmitHandler}>Login</LoginButton>
 							<Typography style={{ textAlign: "center" }}>OR</Typography>
 							<RequestOTP>Request OTP</RequestOTP>
-							<CreateAccount onClick={() => setHaveAccount(false)} >New to Flipkart? Create an account</CreateAccount>
+							<CreateAccount onClick={() => { setHaveAccount(false); setIsError(false) }} >New to Flipkart? Create an account</CreateAccount>
 						</Wrapper>
 						:
 						<Wrapper>
+							{isError && <ErrorText >Invalid input</ErrorText>}
 							<TextField onChange={signupInputChangeHandler} name='name' value={accountDetail.name} label="Enter Name" variant="standard" />
 							<TextField onChange={signupInputChangeHandler} name='phone' value={accountDetail.phone} label="Enter Mobile no." variant="standard" />
 							<TextField onChange={signupInputChangeHandler} name='email' value={accountDetail.email} label="Enter Email" type='email' variant="standard" />
@@ -189,7 +201,7 @@ const LoginDialog = (props) => {
 							<Text >By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
 							<SignupButton onClick={signUpSubmitHandler}>Continue</SignupButton>
 							<Typography style={{ textAlign: "center" }}>OR</Typography>
-							<HaveAccount onClick={() => setHaveAccount(true)}>Already have account? Login</HaveAccount>
+							<HaveAccount onClick={() => { setHaveAccount(true); setIsError(false) }}>Already have account? Login</HaveAccount>
 						</Wrapper>
 				}
 
