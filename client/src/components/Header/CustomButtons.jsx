@@ -6,8 +6,8 @@ import { ShoppingCart } from '@mui/icons-material';
 import LoginDialog from '../login/LoginDialog';
 
 import { DataContext } from '../../contextAPI/Dataprovider';
-import { capitalizeFirstLetter } from '../../constant/modify';
 
+import Profile from './Profile';
 
 
 
@@ -49,11 +49,11 @@ const CustomButtons = () => {
 		<Wrapper>
 			
 			{
-				loggedinUser.name.length > 0
+				loggedinUser.name
 				?
-					<Typography style={{ marginTop: 3, marginRight: 40, fontWeight: 600 }}>{capitalizeFirstLetter(loggedinUser.name)}</Typography>
+					<Profile />
 				:
-				<LoginStyled variant="contained" style={{ marginRight: 40 }} onClick={() => setOpenDialog(true)}>Login</LoginStyled>
+				<LoginStyled variant="contained" style={{ marginRight: 40, marginLeft: 20 }} onClick={() => setOpenDialog(true)}>Login</LoginStyled>
 			}
 
 			<Typography style={{ marginTop: 3, width: 135, marginRight: 40 }}>Become a Seller</Typography>
