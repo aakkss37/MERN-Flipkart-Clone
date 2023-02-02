@@ -28,17 +28,20 @@ const TypographyStyled = styled(Typography)`
 
 
 const Profile = () => {
-	const { loggedinUser, } = useContext(DataContext);
+	const { loggedinUser, setLoggedinUser } = useContext(DataContext);
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	const clickHandler = (event)=>{
 		setMenuOpen(event.currentTarget);
 	}
 
-	const logoutHandler = ()=>{
+	const closeHandler = ()=>{
 		setMenuOpen(false);
 	}
 
+	const logoutHandler = ()=>{
+		setLoggedinUser({})
+	}
 
 	return (
 		<>
@@ -52,7 +55,7 @@ const Profile = () => {
 				id="basic-menu"
 				anchorEl={menuOpen}
 				open={Boolean(menuOpen)}
-				onClose={logoutHandler}
+				onClose={closeHandler}
 			>
 				<MenuItemStyled >
 					<AccountCircle color='primary' fontSize='12px' />
