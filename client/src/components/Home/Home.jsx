@@ -16,13 +16,18 @@ const Component = styled(Box)`
 
 
 const Home = () => {
-	const products = useSelector(state => state.getProducts)
-	console.log("products ====> ", products)
+
 	const dispatch = useDispatch();
 	useEffect(()=>{
 		dispatch(getProducts());
 	}, [dispatch])
 
+
+	const getProduct = useSelector(state => state.getProducts)
+//  console.log("products ====> ", getProduct)
+//  const products  = getProduct.products ===> 'products' is an object.. to get access of any of the field of this object.. we can use .(dot) operator.. OR obj de-structuring
+	const { products } = getProduct //--> "Object De-structuring" same as 'getProduct.products' of above line
+		console.log('products ==> ', products)
 
 	return (
 		<>
