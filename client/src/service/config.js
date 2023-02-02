@@ -52,4 +52,8 @@ export const SERVICE_URL = {
 		url: '/login',
 		method: 'POST',
 	},
+	getProducts: {
+		url: '/products',
+		method: 'GET'
+	}
 }
