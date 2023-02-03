@@ -22,21 +22,33 @@ const Wrapper = styled(Box)`
 const Container = styled(Box)`
 	display: flex;
 `
-const LoginStyled = styled(Button)`
-	color: #2874f0;
-	background: #FFFFFF;
-	text-transform: none;
-	padding: 5px 40px;
-	border-radius: 2px;
-	box-shadow: none;
-	margin-right: 20px;
-	font-weight: 600;
-	height: 32px;
-	&:hover{
-		color: #2874f0;
-		background: #FFFFFF;
+const LoginStyled = styled(Button)(({ theme }) => ({
+	color: '#2874f0',
+	background:' #FFFFFF',
+	textTransform: 'none',
+	padding: '5px 40px',
+	borderRadius: '2px',
+	boxShadow: 'none',
+	marginRight: 40,
+	marginLeft: 20,
+	fontWeight: 600,
+	height: '32px',
+	'&: hover': {
+		color: '#2874f0',
+		background: '#FFFFFF',
+	},
+	[theme.breakpoints.down('md')]: {
+		padding: '2px 4px',
+		marginRight: 10, 
+		marginLeft: 5
 	}
-`
+}))
+const MoreOption = styled(Typography)(({ theme }) => ({
+	marginTop: 3,  marginRight: 60,
+	[theme.breakpoints.down('md')]: {
+		display: 'none',
+	}
+}))
 
 
 
@@ -53,11 +65,11 @@ const CustomButtons = () => {
 				?
 					<Profile />
 				:
-				<LoginStyled variant="contained" style={{ marginRight: 40, marginLeft: 20 }} onClick={() => setOpenDialog(true)}>Login</LoginStyled>
+				<LoginStyled variant="contained" onClick={() => setOpenDialog(true)}>Login</LoginStyled>
 			}
 
-			<Typography style={{ marginTop: 3, width: 135, marginRight: 40 }}>Become a Seller</Typography>
-			<Typography style={{ marginTop: 3, marginRight: 40 }}>More</Typography>
+			<MoreOption >Become a Seller</MoreOption>
+			<MoreOption >More</MoreOption>
 
 			<Container style={{ marginRight: 40 }}>
 				<ShoppingCart />

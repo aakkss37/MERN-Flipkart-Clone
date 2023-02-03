@@ -12,11 +12,15 @@ const SearchContainer = styled(Box)`
   align-items: center;
   padding-top: 2px;
 `;
-const InputSearchBase = styled(InputBase)`
-  font-size: unset;
-  width: 100%;
-  padding-left: 20px;
-`;
+const InputSearchBase = styled(InputBase)(({ theme }) => ({
+	fontSize: 'unset',
+	width: '100%',
+	paddingLeft: '20px',
+	[theme.breakpoints.down('md')]: {
+		display: 'none'
+	}
+}))
+
 const SearchIconWrapper = styled(Box)`
   margin-left: auto;
   padding: 5px;
@@ -26,14 +30,14 @@ const SearchIconWrapper = styled(Box)`
 
 
 const Search = () => {
-  return (
-	  <SearchContainer>
-		  <InputSearchBase placeholder='Search for product, brand and more'/>
-		  <SearchIconWrapper>
-			  <SearchIcon/>
-		  </SearchIconWrapper>
-	  </SearchContainer>
-  )
+	return (
+		<SearchContainer>
+			<InputSearchBase placeholder='Search for product, brand and more' />
+			<SearchIconWrapper>
+				<SearchIcon />
+			</SearchIconWrapper>
+		</SearchContainer>
+	)
 }
 
 

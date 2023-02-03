@@ -12,13 +12,18 @@ import CustomButtons from './CustomButtons';
 const StyledHeader = styled(AppBar)`
     background: #2874f0;
     height: 55px;
+	width: 100%;
 `;
-const Component = styled(Box)`
-    margin-left: 10%;
-    line-height: 0;
-    color: #FFFFFF;
-    text-decoration: none;
-`;
+const Component = styled(Box)(({theme})=>({
+    marginLeft: '10%',
+    lineHeight: 0,
+    color: '#FFFFFF',
+    textDecoration: 'none',
+	[theme.breakpoints.down('md')]: {
+		margin: '5px',
+	}
+}))
+
 const SubHeading = styled(Typography)`
     font-size: 10px;
     font-style: italic;
