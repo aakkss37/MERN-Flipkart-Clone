@@ -18,18 +18,23 @@ const Component = styled(Box)`
 	display: flex;
 `;
 
-const LeftComponent = styled(Box)`
-	width: 83%;
-	margin-top: 10px;
-`
-const RightComponent = styled(Box)`
-	margin-top: 5px;
-	background: #FFFFFF;
-    width: 17%;
-    margin-left: 10px;
-    padding: 5;
-    text-align: center;
-`
+const LeftComponent = styled(Box)(({ theme }) => ({
+	width: '83%',
+	[theme.breakpoints.down('md')]: {
+		width: '100%'
+	}
+}))
+const RightComponent = styled(Box)(({ theme }) => ({
+	marginTop: 10,
+	background: '#FFFFFF',
+	width: '17%',
+	marginLeft: 10,
+	padding: 5,
+	textAlign: 'center',
+	[theme.breakpoints.down('md')]: {
+		display: 'none'
+	}
+}));
 
 const Deal = styled(Box)`
     display: flex;    
@@ -92,7 +97,6 @@ const Slide = (props) => {
 	const renderer = ({ hours, minutes, seconds }) => {
 		return <Box variant="span">{hours} : {minutes} : {seconds}  Left</Box>;
 	};
-
 
 	return (
 		<Component>
