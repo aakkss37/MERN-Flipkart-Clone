@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react';
 
 // MUI
-import { styled, AppBar, Toolbar, Box, Typography, IconButton, } from '@mui/material'
+import { styled, AppBar, Toolbar, Box, Typography, IconButton, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import { ShoppingCart } from '@mui/icons-material';
+import { AccountCircle, AccountBalanceWallet, FavoriteBorder, LocalActivity, Notifications } from '@mui/icons-material';
+import BoltIcon from '@mui/icons-material/Bolt';
 
 // COMPONENTS
 import Search from './Search';
@@ -65,23 +67,59 @@ const Container = styled(Box)(({ theme }) => ({
 	}
 }));
 
+
+const menuList = [
+	{ text: 'My Profile', icon: <AccountCircle color='primary' style={{fontSize: '22px'}} /> },
+	{ text: 'SuperCoin Zone', icon: <BoltIcon color='primary' style={{fontSize: '22px'}} /> },
+	{ text: 'Order', icon: <AccountBalanceWallet color='primary' style={{fontSize: '22px'}} /> },
+	{ text: 'Wishlist', icon: <FavoriteBorder color='primary' style={{fontSize: '22px'}} /> },
+	{ text: 'Coupons', icon: <LocalActivity color='primary' style={{fontSize: '22px'}} /> },
+	{ text: 'Notification', icon: <Notifications color='primary' style={{fontSize: '22px'}} /> },
+	{ text: 'Logout', icon: <AccountCircle color='primary' style={{fontSize: '22px'}} /> },
+]
+const list = () => (
+		<List style={{ width: 250 }}>
+			{menuList.map((item) => (
+				<ListItem key={item.text} disablePadding >
+					<ListItemButton>
+						<ListItemIcon>
+							{item.icon}
+						</ListItemIcon>
+						<ListItemText primary={item.text} />
+					</ListItemButton>
+				</ListItem>
+			))}
+		</List>
+);
+
+
+
+
+
+
 const Header = () => {
 
 	const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
 	const subURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
+	const [isOpen, setIsOpen] = useState(false)
+
 
 	const navigate = useNavigate()
 
+
+	
 
 	return (
 		<StyledHeader>
 			<Toolbar style={{minHeight: 55}}>
 
-				<MenuButton
-					color="inherit"
-				>
-					<MenuIcon/>
+				<MenuButton color="inherit" >
+					<MenuIcon onClick={()=> setIsOpen(true)}/>
 				</MenuButton>
+				<Drawer open={isOpen}  onClose={()=>{setIsOpen(false)}} >
+					{list()}
+				</Drawer>
+
 
 				<Component onClick={() => navigate('/')} >
 					<img src={logoURL} alt="logo" style={{ width: 75 }} />
