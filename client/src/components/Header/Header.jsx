@@ -61,7 +61,7 @@ const Container = styled(Box)(({ theme }) => ({
 	marginLeft: 'auto',
 	display: 'none',
 	[theme.breakpoints.down('sm')]: {
-		display: 'block'
+		display: 'block',
 	}
 }));
 
