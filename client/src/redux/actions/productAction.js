@@ -12,3 +12,4 @@ export const getProducts = () => async (dispatch) => {
 		dispatch({ type: actionType.GET_PRODUCTS_FALI, payload: error.message })
 	}
 }
+
