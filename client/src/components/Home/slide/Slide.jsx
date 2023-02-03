@@ -41,12 +41,17 @@ const Deal = styled(Box)`
     padding: 15px 20px;
 `
 
-const DealText = styled(Typography)`
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 32px;
-    margin-right: 25px;
-`
+const DealText = styled(Typography)(({theme})=>({
+    fontSize: '22px',
+    fontWeight: 600,
+    lineHeight: '32px',
+    marginRight: '25px',
+	[theme.breakpoints.down('sm')]:{
+		fontSize: '18px',
+		marginRight: '5px',
+	}
+}))
+
 
 const Timer = styled(Box)`
     color: #7f7f7f;
@@ -55,13 +60,17 @@ const Timer = styled(Box)`
     align-items: center;
 `;
 
-const ViewAllButton = styled(Button)`
-    margin-left: auto;
-    background-color: #2874f0;
-    border-radius: 2px;
-    font-size: 13px;
-	font-weight: 600
-`;
+const ViewAllButton = styled(Button)(({ theme }) => ({
+    marginLeft: 'auto',
+    backgroundColor: '#2874f0',
+    borderRadius: '2px',
+    fontSize: '13px',
+	fontWeight: 600,
+	[theme.breakpoints.down('sm')]: {
+		fontSize: '12px',
+		padding: '4px',
+	}
+}))
 
 const Image = styled('img')({
 	width: 'auto',

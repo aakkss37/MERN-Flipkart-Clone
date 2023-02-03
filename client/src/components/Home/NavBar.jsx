@@ -4,11 +4,15 @@ import { navData } from '../../constant/data'
 
 
 
-const Component = styled(Box)`
-	display: flex;
-	margin: 55px 140px 0 140px;
-	justify-content: space-between;
-`
+const Component = styled(Box)(({ theme }) => ({
+	display: 'flex',
+	justifyContent: 'space-between',
+	margin: '55px 130px 0 130px !important',
+	overflowX: 'overlay',
+	[theme.breakpoints.down('lg')]: {
+		margin: '0px !important'
+	}
+}))
 const Conatiner = styled(Box)`
 	padding: 12px 8px;
 	text-align: center;
