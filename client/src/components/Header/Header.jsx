@@ -6,6 +6,7 @@ import { styled, AppBar, Toolbar, Box, Typography } from '@mui/material'
 // COMPONENTS
 import Search from './Search';
 import CustomButtons from './CustomButtons';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -19,6 +20,7 @@ const Component = styled(Box)(({theme})=>({
     lineHeight: 0,
     color: '#FFFFFF',
     textDecoration: 'none',
+	cursor: 'pointer',
 	[theme.breakpoints.down('md')]: {
 		margin: '5px',
 	}
@@ -49,12 +51,14 @@ const Header = () => {
 	const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
 	const subURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
 
+	const navigate = useNavigate()
+
 
 	return (
 		<StyledHeader>
 			<Toolbar style={{minHeight: 55}}>
 
-				<Component>
+				<Component onClick={() => navigate('/')} >
 					<img src={logoURL} alt="logo" style={{ width: 75 }} />
 					<Box style={{display: 'flex'}}>
 						<SubHeading>Explore <Box component="span" style={{color: '#FFE500', fontWeight: 800, fontSize: 11 }} >Plus</Box></SubHeading>
