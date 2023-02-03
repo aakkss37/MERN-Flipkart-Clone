@@ -44,7 +44,8 @@ const LoginStyled = styled(Button)(({ theme }) => ({
 	}
 }))
 const MoreOption = styled(Typography)(({ theme }) => ({
-	marginTop: 3,  marginRight: 60,
+	marginTop: 3,  
+	marginRight: 60,
 	[theme.breakpoints.down('md')]: {
 		display: 'none',
 	}
@@ -68,7 +69,7 @@ const CustomButtons = () => {
 				<LoginStyled variant="contained" onClick={() => setOpenDialog(true)}>Login</LoginStyled>
 			}
 
-			<MoreOption >Become a Seller</MoreOption>
+			<MoreOption style={{width: 150}} >Become a Seller</MoreOption>
 			<MoreOption >More</MoreOption>
 
 			<Container style={{ marginRight: 40 }}>

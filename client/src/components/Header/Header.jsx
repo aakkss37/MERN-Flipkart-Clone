@@ -1,7 +1,9 @@
 import React from 'react'
 
 // MUI
-import { styled, AppBar, Toolbar, Box, Typography } from '@mui/material'
+import { styled, AppBar, Toolbar, Box, Typography, IconButton, } from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu';
+import { ShoppingCart } from '@mui/icons-material';
 
 // COMPONENTS
 import Search from './Search';
@@ -41,10 +43,27 @@ const PlusImage = styled('img')({
 	marginLeft: 4
 })
 
-// const CustomButtonWrapper =(Box)`
-// 	 margin-left: 5%;
-// `
+const MenuButton = styled(IconButton)(({ theme }) => ({
+	display: 'none',
+	[theme.breakpoints.down('sm')]: {
+		display: 'block'
+	}
+}));
 
+const CustomButtonWrapper = styled('span')(({ theme }) => ({
+	margin: '0 5% 0 auto',
+	[theme.breakpoints.down('sm')]: {
+		display: 'none'
+	}
+}));
+const Container = styled(Box)(({ theme }) => ({
+	float: 'right',
+	marginLeft: 'auto',
+	display: 'none',
+	[theme.breakpoints.down('sm')]: {
+		display: 'block'
+	}
+}));
 
 const Header = () => {
 
@@ -58,6 +77,12 @@ const Header = () => {
 		<StyledHeader>
 			<Toolbar style={{minHeight: 55}}>
 
+				<MenuButton
+					color="inherit"
+				>
+					<MenuIcon/>
+				</MenuButton>
+
 				<Component onClick={() => navigate('/')} >
 					<img src={logoURL} alt="logo" style={{ width: 75 }} />
 					<Box style={{display: 'flex'}}>
@@ -68,9 +93,14 @@ const Header = () => {
 
 				<Search/>
 
-				<Box style={{margin: '0 5% 0 auto'}}>
+
+				<Container >
+					<ShoppingCart />
+				</Container>
+
+				<CustomButtonWrapper style={{margin: '0 5% 0 auto'}}>
 					<CustomButtons/>
-				</Box>
+				</CustomButtonWrapper>
 
 
 

@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { styled, Box, Grid, Typography } from '@mui/material';
 import Action from './Action';
+import ProductDetail from './ProductDetail';
 
 
 
@@ -69,7 +70,7 @@ const DetailView = () => {
 						<span style={{ color: '#878787' }}><strike>₹{product.price.mrp}</strike></span>&nbsp;&nbsp;&nbsp;
 						<span style={{ color: '#388E3C' }}>{product.price.discount} off</span>
 					</Typography>
-					{/* <ProductDetail product={product} /> */}
+					<ProductDetail product={product} />
 				</RightContainer>
 			</Container>
 		</Component>
