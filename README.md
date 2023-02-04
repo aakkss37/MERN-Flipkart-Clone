@@ -29,12 +29,12 @@ $ git clone https://github.com/[YOUR_GITHUB_USERNAME]/flipkart-clone.git
 
 2. Install the dependencies:
 
-``` npm install ```
+  ``` npm install ```
 
 
 3. Start the development server:
 
-``` npm start ```
+  ``` npm start ```
 
 
 The app will now be running at [http://localhost:3000](http://localhost:3000) in your browser.
