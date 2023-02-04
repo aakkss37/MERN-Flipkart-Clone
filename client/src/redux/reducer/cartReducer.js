@@ -6,9 +6,9 @@ export const cartReducer = (state = [], action) => {
 			state = [...state, action.payload];
 			return state;
 		case actionType.REMOVE_FROM_CART:
-			const index = state.indexOf(action.payload);
-			index>-1 && state.splice(index, 1);
-			return state
+			// console.log(action.payload)
+			let newState = state.filter(obj => obj._id !== action.payload);
+			return newState
 		default:
 			return state;
 	}
