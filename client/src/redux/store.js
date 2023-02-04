@@ -7,6 +7,7 @@ application in real-time, and provides various tools for interacting with the Re
 as time travel debugging and state persistence. */
 import thunk from 'redux-thunk';
 import { getProductsReducer } from "./reducer/getProducts";
+import { cartReducer, cartItemCountReducer } from "./reducer/cartReducer";
 /*
 redux-thunk is a middleware for Redux that allows you to write action creators that return a function 
 instead of an action. This function will receive the dispatch function from the Redux store as an 
@@ -25,6 +26,8 @@ place, rather than spreading it across multiple action creators and reducers.
 
 const reducer = combineReducers({
 	getProducts: getProductsReducer,
+	cart: cartReducer,
+	cartItemCount: cartItemCountReducer,
 })
 
 
