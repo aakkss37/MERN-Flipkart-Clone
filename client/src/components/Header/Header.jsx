@@ -20,6 +20,7 @@ const StyledHeader = styled(AppBar)`
 	width: 100%;
 `;
 const Component = styled(Box)(({theme})=>({
+	width: '150px',
     marginLeft: '10%',
     lineHeight: 0,
     color: '#FFFFFF',
