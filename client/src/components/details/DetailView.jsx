@@ -36,20 +36,20 @@ const DetailView = () => {
 
 	const [searchParams] = useSearchParams();
 	const product_id = searchParams.get('product_id');
-	console.log("product id =====> ", product_id);
+	// console.log("product id =====> ", product_id);
 
 
 	
 	const getProduct = useSelector(state => state.getProducts)
 	const { products } = getProduct
-	console.log("products =====> ", products);
+	// console.log("products =====> ", products);
 	var product = {}
 	products.forEach((item)=> {
 		if(item._id === product_id){
 			product = item;
 		} 
 	})
-	console.log("found item +=+=+=> ", product);
+	
 
 
 
