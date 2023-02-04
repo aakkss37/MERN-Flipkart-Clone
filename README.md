@@ -13,10 +13,12 @@ A clone of the popular e-commerce website Flipkart, built using modern web devel
 - Context API
 
 ## Features
-- User authentication (Login/Logout, Signup)
+- User authentication (Login/Logout)
+- Create an Account (Signup)
+- Home page
 - Product Detail Page
+- Cart
 - Add to Cart/Remove from Cart functionality
-- Sale countdown timer
 - Search product feature
 - Fully responsive UI
 
@@ -26,18 +28,35 @@ A clone of the popular e-commerce website Flipkart, built using modern web devel
 
 $ git clone https://github.com/[YOUR_GITHUB_USERNAME]/flipkart-clone.git
 
+2. ```cd``` to client folder.
 
-2. Install the dependencies:
+3. Open terminal in current directory.
 
-  ``` npm install ```
+4. Install the dependencies, run command:  ``` npm install ```
 
-
-3. Start the development server:
-
-  ``` npm start ```
-
+5. Start the development server, run command:  ``` npm start ```
 
 The app will now be running at [http://localhost:3000](http://localhost:3000) in your browser.
+
+2. ```cd``` to `server` folder.
+
+3. Open terminal in current directory.
+
+4. Install the dependencies, run command:  ``` npm install ```
+
+5. Change the create a ```.env``` file to store your database <username> <password>
+
+6. Store your cradential with name: 
+```
+DB_USERNAME=<username>
+DB_PASSWORD=<password>
+```
+7. Replace the current database url with your database url in file ```db.js```
+Location: ```MERN-Flipkart-clone -> server -> database -> db.js```
+
+5. Start the backend server, run command:  ``` npm start ```
+
+The server will now be running at PORT: 8000 
 
 ## Contributing
 
