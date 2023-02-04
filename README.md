@@ -56,7 +56,7 @@ Location: ```MERN-Flipkart-clone -> server -> database -> db.js```
 
 5. Start the backend server, run command:  ``` npm start ```
 
-The server will now be running at PORT: (8000) 
+The server will now be running at PORT: [8000]:8000
 
 ## Contributing
 
