@@ -24,8 +24,8 @@ const EmptyCart = () => {
 		<Component>
 			<Container>
 				<Image src={imgurl} />
-				<Typography>Your cart is empty!</Typography>
-				<Typography component="span">Add items to it now.</Typography>
+				<Typography textAlign="center" marginBottom="30px">Your cart is empty!</Typography>
+				<Typography component="span"><b>Add items to it now.</b></Typography>
 			</Container>
 		</Component>
 	)
