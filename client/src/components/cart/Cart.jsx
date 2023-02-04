@@ -2,6 +2,7 @@ import { styled, Box, Grid, Typography, Button } from '@mui/material';
 import React from 'react'
 import { useSelector } from 'react-redux'
 import CartItem from './CartItem';
+import EmptyCart from './EmptyCart';
 import TotleBill from './TotleBill';
 
 
@@ -68,7 +69,7 @@ const Cart = () => {
 						</Grid>
 					</Component>
 					:
-					<div>Empty</div>
+					<EmptyCart/>
 			}
 		</>
 	)
