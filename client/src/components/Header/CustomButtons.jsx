@@ -72,7 +72,7 @@ const CustomButtons = () => {
 			<MoreOption style={{width: 150}} >Become a Seller</MoreOption>
 			<MoreOption >More</MoreOption>
 
-			<Container style={{ marginRight: 40 }}>
+			<Container style={{ marginRight: 40, cursor: "pointer" }}>
 				<ShoppingCart />
 				<Typography>&nbsp;Cart</Typography>
 			</Container>
