@@ -8,6 +8,7 @@ import LoginDialog from '../login/LoginDialog';
 import { DataContext } from '../../contextAPI/Dataprovider';
 
 import Profile from './Profile';
+import { Link } from 'react-router-dom';
 
 
 
@@ -19,8 +20,12 @@ const Wrapper = styled(Box)`
 		align-items: center;
 	}
 `
-const Container = styled(Box)`
+const Container = styled(Link)`
 	display: flex;
+	margin-right: 40; 
+	cursor: "pointer";
+	
+	color: white;
 `
 const LoginStyled = styled(Button)(({ theme }) => ({
 	color: '#2874f0',
@@ -69,10 +74,10 @@ const CustomButtons = () => {
 				<LoginStyled variant="contained" onClick={() => setOpenDialog(true)}>Login</LoginStyled>
 			}
 
-			<MoreOption style={{width: 150}} >Become a Seller</MoreOption>
-			<MoreOption >More</MoreOption>
+			<MoreOption style={{ width: 150, cursor: 'pointer' }} >Become a Seller</MoreOption>
+			<MoreOption style={{cursor: 'pointer'}}>More</MoreOption>
 
-			<Container style={{ marginRight: 40, cursor: "pointer" }}>
+			<Container to={'/cart'} style={{ textDecoration: 'none'  }}>
 				<ShoppingCart />
 				<Typography>&nbsp;Cart</Typography>
 			</Container>

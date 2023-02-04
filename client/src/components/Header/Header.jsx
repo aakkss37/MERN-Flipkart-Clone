@@ -10,7 +10,7 @@ import BoltIcon from '@mui/icons-material/Bolt';
 // COMPONENTS
 import Search from './Search';
 import CustomButtons from './CustomButtons';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -58,10 +58,11 @@ const CustomButtonWrapper = styled('span')(({ theme }) => ({
 		display: 'none'
 	}
 }));
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled(Link)(({ theme }) => ({
 	float: 'right',
 	marginLeft: 'auto',
 	display: 'none',
+	color: 'white',
 	[theme.breakpoints.down('sm')]: {
 		display: 'block',
 	}
@@ -132,7 +133,7 @@ const Header = () => {
 				<Search/>
 
 
-				<Container >
+				<Container to={'/cart'}>
 					<ShoppingCart />
 				</Container>
 
