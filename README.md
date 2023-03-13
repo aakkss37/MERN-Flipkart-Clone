@@ -44,9 +44,9 @@ $ The app will now be running at [http://localhost:3000](http://localhost:3000) 
 
 4. Install the dependencies, run command:  ``` npm install ```
 
-5. Change the create a ```.env``` file to store your database <username> <password>
+5. Create a ```.env``` file to store your database <username> <password>
 
-6. Store your cradential with name: 
+6. Store your cradential with the following name in ```.env``` file: 
 ```
 DB_USERNAME=<username>
 DB_PASSWORD=<password>
